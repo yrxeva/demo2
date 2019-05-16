@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# 引入url函数
+from django.conf.urls import url,include
 
-from django.conf.urls import include,url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 引入一个外部路由配置
+    url('book/',include('book.urls'))
+
 ]
