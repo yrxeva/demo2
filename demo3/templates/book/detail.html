@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+</head>
+<body>
+    <h1>主角</h1>
+    {% if book %}
+    <h3>{{ book.title }}</h3>
+    <ul>
+        {% for hero in book.hero_set.all %}
+
+        <li> {{ hero.name }}-{{ hero.skill }}  </li>
+        {% empty %}
+        <li>here is no hero</li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+没有书籍
+{% endif %}
+<a href="/book/list/">返回列表</a>
+</body>
+</html>
