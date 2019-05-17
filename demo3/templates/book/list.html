@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>list</title>
+    <link rel="stylesheet" href="/static/book/css/content.css">
 </head>
 <body>
-    <h2>书名</h2>
-    <a href="/book/index/">返回首页</a>
+
+<div class="container">
+        <h2>书名</h2>
+    {# <a href="/book/index/">返回首页</a> #}
+    <a href="{%url 'book:index' %}">返回首页</a>
 
     <!--模板表达式-->
     {% if allBook %}
     <ul>
         {% for book in allBook %}
         <li>
-            <a href="/book/detail/{{ book.id }}/">{{ book.title }}</a>
+
+            <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a>
+            <a href="{% url 'book:deletebook' book.id %}">删除</a>
         </li>
     {% empty %}
     没有书籍
     {% endfor %}
     </ul>
-
     {% else %}
     没有书籍
     {% endif %}
-
+</div>
 
 
 </body>

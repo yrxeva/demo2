@@ -22,6 +22,6 @@ from django.conf.urls import url,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 引入一个外部路由配置
-    url('book/',include('book.urls'))
+    url('book/',include('book.urls',namespace='book')),
 
 ]

@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>detail</title>
+    <link rel="stylesheet" href="/static/book/css/content.css">
 </head>
 <body>
-    <h1>主角</h1>
+
+<div class="container">
+        <h1>主角</h1>
     {% if book %}
     <h3>{{ book.title }}</h3>
     <ul>
         {% for hero in book.hero_set.all %}
 
-        <li> {{ hero.name }}-{{ hero.skill }}  </li>
+        <li>
+            {{ hero.name }}-{{ hero.skill }}
+            <a href=""
+        </li>
         {% empty %}
         <li>here is no hero</li>
         {% endfor %}
@@ -20,6 +26,7 @@
 {% else %}
 没有书籍
 {% endif %}
-<a href="/book/list/">返回列表</a>
+<a href="{%url 'book:list' %}">返回列表</a>
+</div>
 </body>
 </html>
