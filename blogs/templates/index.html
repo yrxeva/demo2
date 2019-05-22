@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load extend_fun %}
+
 {% block left %}
 {% if page %}
     {% for article in page.object_list %}
@@ -19,7 +21,12 @@
     </header>
     <div class="entry-content clearfix">
         <p>
-            {{ article.body }}
+            {# 使用过滤器只显示前十个字符 #}
+            {# 方法1，使用django自带过滤器 #}
+            {#{{ article.body|truncatechars:10 }}#}
+
+            {# 方法2，使用自定义过滤器 #}
+            {{ article.body|myslice:5 }}
         </p>
         <div class="read-more cl-effect-14">
             <a href="{% url 'blog:detail' article.id %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
